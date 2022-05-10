@@ -20,6 +20,7 @@ import (
 	"text/template"
 
 	"github.com/pingcap/tiup/embed"
+	"github.com/pingcap/tiup/pkg/utils"
 	"golang.org/x/mod/semver"
 )
 
@@ -144,6 +145,11 @@ func (c *CDCScript) PatchByVersion(clusterVersion, dataDir string) *CDCScript {
 		if _, ok := ignoreVersion[clusterVersion]; !ok {
 			c = c.WithDataDirEnabled()
 		}
+	}
+	// nightly version supports data-dir too.
+	ver := utils.Version(clusterVersion)
+	if ver.IsNightly() {
+		c = c.WithDataDirEnabled()
 	}
 
 	return c

@@ -745,6 +745,7 @@ cdc_servers:
 		"v6.0.0-alpha": {true, true, true},
 		"v6.1.0":       {true, true, true},
 		"v99.0.0":      {true, true, true},
+		"nightly":      {true, true, true},
 	}
 
 	checkByVersion := func(version string) {
